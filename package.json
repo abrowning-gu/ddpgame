@@ -27,7 +27,6 @@
     "@capacitor/keyboard": "6.0.1",
     "@capacitor/status-bar": "6.0.0",
     "@ionic/angular": "^8.0.0",
-    
     "ionicons": "^7.2.1",
     "p5": "^1.9.4",
     "rxjs": "~7.8.0",
@@ -47,6 +46,7 @@
     "@capacitor/cli": "6.1.1",
     "@ionic/angular-toolkit": "^11.0.1",
     "@types/jasmine": "~5.1.0",
+    "@types/p5": "^1.7.6",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.57.0",
@@ -60,8 +60,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.4.0",
-    "@types/p5": "^1.7.6"
+    "typescript": "~5.4.0"
   },
   "description": "An Ionic project"
 }
