@@ -1,0 +1,6 @@
+
+    Answer icon with no letter. Colours are straight black, light pink (R=227 G=171 B1=69) and maroon (R=154 G=72 B=82)
+    The ‘corner’ images. Same colours as above, along with blue (R=88 G=117 B1=131) and purple (R=111 G=79 B1=92)
+    The maroon dots that sit adjacent to the corner blocks and the accent in the correct answer box (both of which are the same maroon as above ie (R=154 G=72 B=82)
+    The correct, start and try again buttons, background colour for which is tan (R=210 G=181 B=159)
+    The arrow next to the “Next question text” is a bit weird, but I’ve saved that and hopefully it works in attached
