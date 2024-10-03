@@ -4,3 +4,7 @@
     The maroon dots that sit adjacent to the corner blocks and the accent in the correct answer box (both of which are the same maroon as above ie (R=154 G=72 B=82)
     The correct, start and try again buttons, background colour for which is tan (R=210 G=181 B=159)
     The arrow next to the “Next question text” is a bit weird, but I’ve saved that and hopefully it works in attached
+
+    Background colour: #FFFCE5
+    Primary Button Background:  (R=210 G=181 B=159)
+    Other buttons done as images if needed.
