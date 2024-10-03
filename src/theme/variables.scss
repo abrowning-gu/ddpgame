@@ -1,2 +1,12 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+:root{
+    
+    --ion-background:url(../assets/corneronly.png);
+    --ion-toolbar-background:rgb(154,72,82);
+    --ion-toolbar-color:rgb(255,255,255);
+}
+body{
+    background: url(../assets/corneronly.png) no-repeat;
+   
+}

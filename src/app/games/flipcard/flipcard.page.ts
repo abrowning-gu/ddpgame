@@ -2,14 +2,16 @@ import { Component, OnInit,Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //import { FormsModule } from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { IonContent, IonHeader, IonTitle, IonToolbar,IonButtons,IonMenuButton,IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar,IonButtons,IonMenuButton,IonButton,IonIcon } from '@ionic/angular/standalone';
 import { Card } from 'src/app/card';
+import { addIcons } from 'ionicons';
+import { volumeHighOutline } from 'ionicons/icons';
 @Component({
   selector: 'app-flipcard',
   templateUrl: './flipcard.page.html',
   styleUrls: ['./flipcard.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar,IonButtons,IonButton,IonMenuButton],
+  imports: [IonContent, IonIcon, IonHeader, IonTitle, IonToolbar,IonButtons,IonButton,IonMenuButton],
   animations: [
     trigger('flipState', [
       state('active', style({
@@ -30,16 +32,18 @@ export class FlipcardPage implements OnInit {
   bimage:string = "";
   fimage:string= "";
 
-  cards:Card[] =[{frontimage:"shapes.svg",backimage:"shapes.svg",fronttext:"front1",backtext:"back1"},
-    {frontimage:"shapes.svg",backimage:"shapes.svg",fronttext:"front2",backtext:"back2"},
-    {frontimage:"shapes.svg",backimage:"shapes.svg",fronttext:"front3",backtext:"back3"},
-    {frontimage:"shapes.svg",backimage:"shapes.svg",fronttext:"front4",backtext:"back4"},
+  cards:Card[] =[{frontimage:"kuku/animals/adhirran-sawfish.png",backimage:"kuku/animals/adhirran-sawfish.png",fronttext:"Sawfish",backtext:"adhirran"},
+    {frontimage:"kuku/animals/agenhung-dingo.png",backimage:"kuku/animals/agenhung-dingo.png",fronttext:"Dingo",backtext:"Apenhung"},
+    {frontimage:"kuku/animals/akl-long-neck-turtle.png",backimage:"kuku/animals/akl-long-neck-turtle.png",fronttext:"Long Turtle Neck",backtext:"Akl"},
+    {frontimage:"kuku/animals/akyurrya-echidna.png",backimage:"kuku/animals/akyurrya-echidna.png",fronttext:"Echidna",backtext:"Akyurrya"},
   ] 
 
   currentcard:number = 0;
   prevactive:boolean = true;
   nextactive:boolean = false;
-  constructor() { }
+  constructor() {
+    addIcons({volumeHighOutline});
+   }
 
   ngOnInit() {
     this.ftext = this.cards[this.currentcard].fronttext;

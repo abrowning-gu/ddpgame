@@ -2,33 +2,9 @@ import { Component, OnInit,ElementRef, Renderer2,ViewChild  } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar,IonButtons,IonMenuButton } from '@ionic/angular/standalone';
-import { Object } from './object';
+import sketch from './sketch';
 import * as p5  from 'p5';
 
-const sketch = (p: p5) => {
-  let obj:any;
-  p.preload = () => {};
-
-  p.setup = () => {
-    p.createCanvas(p.windowWidth, p.windowHeight);
-    obj = new Object(p,20,40,10);
-  };
-
-  p.windowResized = () => {
-    p.resizeCanvas(p.windowWidth, p.windowHeight);
-  };
-
-  let x = 0;
-
-  p.draw = () => {
-    p.background(220);
-  
-      
-      obj.show();
-      obj.update();
-      
-  };
-};
 @Component({
   selector: 'app-tilegame',
   templateUrl: './tilegame.page.html',

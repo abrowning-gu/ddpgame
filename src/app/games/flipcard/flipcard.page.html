@@ -8,11 +8,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">flipcard</ion-title>
-    </ion-toolbar>
-  </ion-header>
+ 
 
   <div class="tp-wrapper">
     <div class="tp-box" [@flipState]="flip">
@@ -21,17 +17,19 @@
         {{ftext}}
       </div>
       <div class="tp-box__side tp-box__back">
+        
         <img src="assets/{{bimage}}" />
         {{btext}}
+        
       </div>
-      <div>
+    </div>
       
-    </div>
-    </div>
-    <ion-button (click)="toggleFlip()" >toggle</ion-button>
-    <ion-button (click)="speak()">speak</ion-button>
-  
-  </div>
+  </div> 
+   <div class="gamebuttons">
+    <ion-button (click)="toggleFlip()" >Flip</ion-button>
+    <ion-button (click)="speak()">speak <ion-icon slot="start" name="volume-high-Outline"></ion-icon></ion-button>
   <ion-button (click)="previous()" [disabled]="prevactive">Previous Card</ion-button>
   <ion-button (click)="next()" [disabled]="nextactive">Next Card</ion-button>
+</div>
+
 </ion-content>
