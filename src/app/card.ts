@@ -3,6 +3,7 @@ export interface Card {
     backtext:string;
     frontimage:string;
     backimage:string;
+    audio:string;
     // fronttext:string="";
     // backtext:string="";
     // frontimage:string = "";

@@ -26,6 +26,9 @@
       
   </div> 
    <div class="gamebuttons">
+    <audio id="audiofile">
+      <source src="assets/{{audiofile}}" type="audio/mpeg">
+    </audio>
     <ion-button (click)="toggleFlip()" >Flip</ion-button>
     <ion-button (click)="speak()">speak <ion-icon slot="start" name="volume-high-Outline"></ion-icon></ion-button>
   <ion-button (click)="previous()" [disabled]="prevactive">Previous Card</ion-button>

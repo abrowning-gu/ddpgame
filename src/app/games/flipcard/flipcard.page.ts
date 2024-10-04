@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 //import { FormsModule } from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -6,6 +6,8 @@ import { IonContent, IonHeader, IonTitle, IonToolbar,IonButtons,IonMenuButton,Io
 import { Card } from 'src/app/card';
 import { addIcons } from 'ionicons';
 import { volumeHighOutline } from 'ionicons/icons';
+import { HttpService } from 'src/app/services/http.service';
+
 @Component({
   selector: 'app-flipcard',
   templateUrl: './flipcard.page.html',
@@ -26,30 +28,40 @@ import { volumeHighOutline } from 'ionicons/icons';
   ]
 })
 export class FlipcardPage implements OnInit {
+
+  //@ViewChild('audiofile', {static: true}) audio: HTMLAudioElement;
   flip:string='inactive';
   ftext:string="";
   btext:string = "";
   bimage:string = "";
   fimage:string= "";
-
-  cards:Card[] =[{frontimage:"kuku/animals/adhirran-sawfish.png",backimage:"kuku/animals/adhirran-sawfish.png",fronttext:"Sawfish",backtext:"adhirran"},
-    {frontimage:"kuku/animals/agenhung-dingo.png",backimage:"kuku/animals/agenhung-dingo.png",fronttext:"Dingo",backtext:"Apenhung"},
-    {frontimage:"kuku/animals/akl-long-neck-turtle.png",backimage:"kuku/animals/akl-long-neck-turtle.png",fronttext:"Long Turtle Neck",backtext:"Akl"},
-    {frontimage:"kuku/animals/akyurrya-echidna.png",backimage:"kuku/animals/akyurrya-echidna.png",fronttext:"Echidna",backtext:"Akyurrya"},
-  ] 
+  audiofile:string="";
+  cards:Card[] = [];
+ 
+ 
 
   currentcard:number = 0;
   prevactive:boolean = true;
   nextactive:boolean = false;
-  constructor() {
+  // 
+  constructor(private httpservice: HttpService) {
     addIcons({volumeHighOutline});
+   
+    
    }
-
+ 
   ngOnInit() {
+    this.httpservice.getCards().subscribe(res => {
+      
+    this.cards = res;
+     
     this.ftext = this.cards[this.currentcard].fronttext;
     this.fimage = this.cards[this.currentcard].frontimage;
     this.btext = this.cards[this.currentcard].backtext;
     this.bimage = this.cards[this.currentcard].backimage;
+    this.audiofile = this.cards[this.currentcard].audio;
+    });
+    
    
   }
   toggleFlip() {
@@ -61,11 +73,24 @@ export class FlipcardPage implements OnInit {
     let texttospeak:string = "";
     if (this.flip == 'inactive'){
       texttospeak = this.ftext;
+      let msg = new SpeechSynthesisUtterance(texttospeak);
+      let synth=(<any>window).speechSynthesis;
+      let voices = synth.getVoices();
+     
+      msg.lang = "en-AU";
+      msg.rate = 0.75;
+      msg.voice = voices[1];
+    synth.speak(msg);
     }else{
-       texttospeak = this.btext;
+      let audio = new Audio();
+      if (this.audiofile != ""){
+        audio.src='../assets/' + this.audiofile;
+        audio.load();
+        audio.play();
+      }
+     
     }
-    var msg = new SpeechSynthesisUtterance(texttospeak);
-    (<any>window).speechSynthesis.speak(msg);
+    
   }
 
   next(){
@@ -94,5 +119,6 @@ export class FlipcardPage implements OnInit {
       this.fimage = this.cards[this.currentcard].frontimage;
       this.btext = this.cards[this.currentcard].backtext;
       this.bimage = this.cards[this.currentcard].backimage;
+      this.audiofile = this.cards[this.currentcard].audio;
   }
 }
