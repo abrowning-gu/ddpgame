@@ -1,11 +1,17 @@
 :host{
   --box-width:300px;
   --box-height:300px;
+  --header-height:100px;
 }
-ion-content{
-  --background:url("../../../assets/corneronly.png") rgb(255,252,229) no-repeat fixed ;
-}
+ ion-content{
+  --background: rgb(255,252,229)  ;
+ }
 ion-button{
+  //--background:rgba(210,181,159,0.3);
+  --background:rgba(87,116,131,0.9);
+  --color:rgb(255,255,255);
+}
+.gamebuttons ion-button{
   --background:rgb(210,181,159);
   --border-color:rgb(0,0,0);
   --border-width:4px;
@@ -13,10 +19,53 @@ ion-button{
   --border-style:solid;
   --color:rgb(0,0,0);
 }
+.dots{
+  float:right;
+  width:50px;
+  height:auto;
+  margin-right:2em;
+  cursor:grabbing;
+
+}
+.layouttop img{
+  width:auto;
+  max-height:var(--header-height);
+}
+.layoutbottom img{
+  
+  transform:rotate(180deg);
+  float:right;
+
+  width:auto;
+  max-height:var(--header-height);
+}
+
+#gamespace{
+  display:grid;
+  grid-template-rows:1fr 3fr 1fr;
+  width: 100vw;
+  height: 100vh;
+}
+.controls{
+  display:grid;
+  grid-template-columns: 70px 1fr 70px;
+}
+.gamebuttons{
+  display:flex;
+  flex-direction:colums;
+  justify-content: center;
+}
+.prev ,.next{
+  align-self:center;
+  
+}
+
 .tp-wrapper {
+  position:relative;
+  top:-3rem;
     -webkit-perspective: 1000px;
             perspective: 1000px;
-     margin-bottom:4em;   
+     margin-bottom:2em;   
      display:grid;
      justify-content: center;
      align-items: center;   
@@ -53,14 +102,14 @@ ion-button{
             user-select: none;
   }
   .tp-box__front {
-    background: rgba(100,100,100,0.8);
+  //  background: rgba(100,100,100,0.8);
     border-radius: 12px;
     -webkit-transform : rotateY(0deg);
     -ms-transform     : rotateY(0deg);
     transform         : rotateY(0deg);
   }
   .tp-box__back {
-    background:rgba(100,100,100,0.7);
+   // background:rgba(100,100,100,0.7);
     border-radius: 12px;
     -webkit-transform : rotateY(-180deg);
     -ms-transform     : rotateY(-180deg);
@@ -70,30 +119,50 @@ ion-button{
     width:100%;
     aspect-ratio:1/1;
   }
-
-  .gamebuttons{
-    display:flex;
-    flex-direction:colums;
-    justify-content: center;
+  @media only screen and (min-width:200px){
+    .tp-box{
+      width:calc(var(--box-width) * 0.7);
+      height:calc(var(--box-height) * 0.7);
+    }
+    .layouttop img{
+     
+      max-height:calc(var(--header-height)*0.7);
+    }
+    .layoutbottom img{
+     
+      max-height:calc(var(--header-height)*0.7);
+    }
   }
+
  @media only screen and (min-width:600px){
 
   .tp-box{
-    width:calc(var(--box-width) * 1.5);
-    height:calc(var(--box-height) * 1.5);
+    width:calc(var(--box-width) * 1);
+    height:calc(var(--box-height) * 1);
+  }
+  .layouttop img{
+     
+    max-height:calc(var(--header-height)*1);
+  }
+  .layoutbottom img{
+   
+    max-height:calc(var(--header-height)*1);
   }
  } 
  @media only screen and (min-width:900px){
-
+  .layouttop img,.layoutbottom img{
+    max-height:calc(var(--header-height)*1.1);
+  }
+  
   .tp-box{
-    width:calc(var(--box-width) * 2);
-    height:calc(var(--box-height) *2);
+    width:calc(var(--box-width) * 1.2);
+    height:calc(var(--box-height) *1.2);
   }
  } 
  @media only screen and (min-width:1440px){
 
   .tp-box{
-    width:calc(var(--box-width) * 2.5);
-    height:calc(var(--box-height) *2.5);
+    width:calc(var(--box-width) * 1);
+    height:calc(var(--box-height) * 1);
   }
  } 

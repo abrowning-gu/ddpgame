@@ -5,7 +5,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { IonContent, IonHeader, IonTitle, IonToolbar,IonButtons,IonMenuButton,IonButton,IonIcon } from '@ionic/angular/standalone';
 import { Card } from 'src/app/card';
 import { addIcons } from 'ionicons';
-import { volumeHighOutline } from 'ionicons/icons';
+import { arrowBack, arrowForward, infinite, volumeHighOutline } from 'ionicons/icons';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -29,41 +29,57 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class FlipcardPage implements OnInit {
 
-  //@ViewChild('audiofile', {static: true}) audio: HTMLAudioElement;
   flip:string='inactive';
+  isword:string="true";
   ftext:string="";
   btext:string = "";
   bimage:string = "";
   fimage:string= "";
   audiofile:string="";
   cards:Card[] = [];
- 
- 
-
   currentcard:number = 0;
   prevactive:boolean = true;
   nextactive:boolean = false;
-  // 
+  
   constructor(private httpservice: HttpService) {
-    addIcons({volumeHighOutline});
+
+    addIcons({volumeHighOutline,arrowForward,arrowBack,infinite});
    
     
    }
  
   ngOnInit() {
+    //get card data
     this.httpservice.getCards().subscribe(res => {
       
-    this.cards = res;
+    this.cards = this.shuffleArray(res);
      
     this.ftext = this.cards[this.currentcard].fronttext;
     this.fimage = this.cards[this.currentcard].frontimage;
     this.btext = this.cards[this.currentcard].backtext;
     this.bimage = this.cards[this.currentcard].backimage;
+    
     this.audiofile = this.cards[this.currentcard].audio;
+      if (this.audiofile == ""){
+        this.isword="true";
+      }else{
+        this.isword="false";
+      }
+      console.log('flipaudio',this.audiofile);
+      console.log(this.isword);
     });
     
    
   }
+  shuffleArray(array:any) {
+    for (var i = array.length - 1; i >= 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
   toggleFlip() {
    
     this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
@@ -76,7 +92,7 @@ export class FlipcardPage implements OnInit {
       let msg = new SpeechSynthesisUtterance(texttospeak);
       let synth=(<any>window).speechSynthesis;
       let voices = synth.getVoices();
-     
+     console.log(synth);
       msg.lang = "en-AU";
       msg.rate = 0.75;
       msg.voice = voices[1];
@@ -120,5 +136,10 @@ export class FlipcardPage implements OnInit {
       this.btext = this.cards[this.currentcard].backtext;
       this.bimage = this.cards[this.currentcard].backimage;
       this.audiofile = this.cards[this.currentcard].audio;
+      if (this.audiofile == ""){
+        this.isword="true";
+      }else{
+        this.isword="false";
+      }
   }
 }

@@ -1,16 +1,22 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Flip Card</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content [fullscreen]="true" class="ion-padding">
- 
+<ion-content [fullscreen]="true" >
+  
+<div id="gamespace">
+  
+<div class="layouttop"><div class="dots"><a href="/"><img src="assets/dots-maroon.png" role="navigation" alt="nav back button"/></a></div><img src="assets/corneronly.png"/></div>
 
+<div class="controls">
+ <div class="prev"> <ion-button (click)="previous()" [disabled]="prevactive"> <ion-icon size="large" name="arrow-back"></ion-icon> </ion-button></div>
   <div class="tp-wrapper">
+   
     <div class="tp-box" [@flipState]="flip">
       <div class="tp-box__side tp-box__front">
         <img src="assets/{{fimage}}" />
@@ -25,14 +31,18 @@
     </div>
       
   </div> 
-   <div class="gamebuttons">
-    <audio id="audiofile">
-      <source src="assets/{{audiofile}}" type="audio/mpeg">
-    </audio>
-    <ion-button (click)="toggleFlip()" >Flip</ion-button>
-    <ion-button (click)="speak()">speak <ion-icon slot="start" name="volume-high-Outline"></ion-icon></ion-button>
-  <ion-button (click)="previous()" [disabled]="prevactive">Previous Card</ion-button>
-  <ion-button (click)="next()" [disabled]="nextactive">Next Card</ion-button>
+  <div class="next"><ion-button (click)="next()"  [disabled]="nextactive"> <ion-icon size="large"  name="arrow-forward"></ion-icon> </ion-button></div>
 </div>
-
+   <div class="gamebuttons">
+    
+   <div> <ion-button (click)="toggleFlip()" >Flip <ion-icon slot="start" name="infinite"></ion-icon></ion-button></div>
+    <div><ion-button (click)="speak()" [disabled]="isword">Speak <ion-icon slot="start" name="volume-high-Outline"></ion-icon></ion-button></div>
+  
+  
+</div>
+<div class="layoutbottom"><img src="assets/corneronly.png"/></div>
+</div>
+<audio id="audiofile">
+  <source src="assets/{{audiofile}}" type="audio/mpeg">
+</audio>
 </ion-content>
