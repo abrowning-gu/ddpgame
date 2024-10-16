@@ -61,7 +61,7 @@ export class FlipcardPage implements OnInit {
    
     this.card = this.cards[this.currentcard];
       //check if a audiofile exists else diable the button  
-    this.isword = this.utils.isAudioexist(this.card.audio);
+   // this.isword = this.utils.isAudioexist(this.card.audio);
       
     });
     
@@ -77,7 +77,7 @@ export class FlipcardPage implements OnInit {
   speak(){
     let texttospeak:string = "";
     if (this.flip == 'inactive'){
-      texttospeak = this.ftext;
+      texttospeak = this.cards[this.currentcard].worde;
       let msg = new SpeechSynthesisUtterance(texttospeak);
       let synth=(<any>window).speechSynthesis;
       let voices = synth.getVoices();
@@ -88,8 +88,8 @@ export class FlipcardPage implements OnInit {
     synth.speak(msg);
     }else{
       let audio = new Audio();
-      if (this.audiofile != ""){
-        audio.src='../assets/' + this.audiofile;
+      if (this.cards[this.currentcard].audio != ""){
+        audio.src='../assets/' + this.cards[this.currentcard].audio;
         audio.load();
         audio.play();
       }

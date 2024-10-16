@@ -1,12 +1,32 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+@font-face {
+    font-family: 'edu-qld';
+    font-style: normal;
+    src: url('../assets/fonts/EduQLDBeginner-VariableFont_wght.ttf');
+  }
+  @font-face {
+    font-family: 'noto-sans';
+    font-style: normal;
+    src: url('../assets/fonts/NotoSans-SemiBold.ttf');
+  }
 :root{
     
     --ion-background:url(../assets/corneronly.png);
     --ion-toolbar-background:rgb(154,72,82);
     --ion-toolbar-color:rgb(255,255,255);
+    --ion-font-family:noto-sans, Arial;
+    
 }
+@supports (font-variation-settings: "wdth" 800) {
+    body {
+        font-size:1.3em;
+      font-family: noto-sans;
+      font-weight:800;
+    }
+  }
 body{
+    
     background: url(../assets/corneronly.png) no-repeat;
      
    

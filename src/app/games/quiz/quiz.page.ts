@@ -109,20 +109,23 @@ export class QuizPage implements OnInit {
     this.configureQuestion();
     this.nextactive = false;
   }
- 
+ clearpopover(){
+    this.isPopovertrueOpen = false;
+    this.isPopoverfalseOpen = false;
+ }
   itemSelected(event:any){
-  console.log(event);
-  console.log(this.question.word);
+  console.log(event.detail.value, this.question.word)
  
     if (event.detail.value == this.question.word){  
-      console.log("Open Popup");   
+      console.log("Open Popup correct");   
       this.isPopovertrueOpen = true;
-      this.radval="";
+     
     }else{
+      console.log("Open Popup incorrect");  
       this.isPopoverfalseOpen = true;
       
     }
-    event.target.value = "";
+
   }
   configureQuestion(){
     this.options = [];
