@@ -1,0 +1,64 @@
+<ion-content [fullscreen]="true" >
+  <ion-popover slide="top" alignment="center" [isOpen]="isPopovertrueOpen" (ionPopoverDidDismiss)="next()">
+    <ng-template>
+      <div class="notification">
+        <img src="assets/accent.png" /> Well Done
+        <div class="pyro">
+          <div class="before"></div>
+          <div class="after"></div>
+      </div>
+     </div>
+    </ng-template>
+
+  </ion-popover>
+  <ion-popover slide="top" alignment="center" size="cover" [isOpen]="isPopoverfalseOpen" >
+    <ng-template>
+     
+        <div class="notification">
+         <img src="assets/accent.png" /> Try Again 
+      </div>
+     
+    </ng-template>
+
+  </ion-popover>
+  <div id="gamespace">
+    
+  <div class="layouttop"><div class="dots"><a routerLink="/" ><img src="assets/dots-maroon.png" role="navigation" alt="nav back button" /></a></div><img src="assets/corneronly.png"/></div>
+  
+  <div class="controls">
+   <div class="prev"> <ion-button (click)="previous()" [disabled]="prevactive"> <ion-icon size="large" name="arrow-back"></ion-icon> </ion-button></div>
+    <div class="tp-wrapper">
+      
+       <div class="tp-box" >
+        <img src="assets/{{question.image}}" />
+       
+       
+       
+      
+      </div> 
+      <div class="questions">
+        <p>{{question.question}} {{question.worde}}</p>
+        <ion-radio-group name="questions" (ionChange) = "itemSelected($event)" [(ngModel)]="radval">
+          <ion-list>
+            <ion-item class="question" *ngFor="let option of question.options">
+              <ion-radio labelPlacement="end" justify="start" value="{{option}}" >{{option}}</ion-radio>
+            </ion-item>
+          </ion-list>
+        </ion-radio-group>
+       </div> 
+    </div> 
+    <div class="next"><ion-button (click)="next()"  [disabled]="nextactive"> <ion-icon size="large"  name="arrow-forward"></ion-icon> </ion-button></div>
+  </div>
+
+     <!-- <div class="gamebuttons">
+      
+     <div> <ion-button (click)="toggleFlip()" >Flip <ion-icon slot="start" name="infinite"></ion-icon></ion-button></div>
+      <div><ion-button (click)="speak()" [disabled]="isword">Speak <ion-icon slot="start" name="volume-high-Outline"></ion-icon></ion-button></div>
+    
+    
+  </div> -->
+  <div class="layoutbottom"><img src="assets/corneronly.png"/></div>
+  </div>
+  
+  </ion-content>
+  

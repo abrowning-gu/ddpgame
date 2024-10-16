@@ -1,0 +1,91 @@
+[
+ 
+        {"word":"Adhirran",	
+        "worde":"Sawfish",
+        "frontimage":"kuku/data/adhirran-sawfish.png",
+        "backimage":"kuku/data/adhirran-sawfish.png",
+        "audio":"kuku/animals/arrawi-wallaby.m4a",
+        "audioe":""},	
+
+        {"word":"Akul",	
+        "worde":"Long neck turtle",
+        "frontimage":"kuku/data/akl-long-neck-turtle.png",
+        "backimage":"kuku/data/akl-long-neck-turtle.png",
+        "audio":"kuku/data/akul-long-neck-turtle.mp3",
+        "audioe":""	},
+
+        {"word":"Albeng",	
+        "worde":"Barramundi",
+        "frontimage":"kuku/data/albeng-barramundi.png",
+        "backimage":"kuku/data/albeng-barramundi.png",
+        "audio":"kuku/data/albeng-barramundi.mp3",
+        "audioe":""},
+
+        
+
+        {"word":"Ambirr ambye",	
+        "worde":"Big eel",
+        "frontimage":"kuku/data/ambirr-ambye-big-eel.png",
+        "backimage":"kuku/data/ambirr-ambye-big-eel.png",
+        "audio":"kuku/data/ambirr-ambye-big-eel.mps",
+        "audioe":""},
+
+        {"word":"Anharr",	
+        "worde":"Saltwater crocodile",
+        "frontimage":"kuku/data/anharr-saltwater-crocodile.png",
+        "backimage":"kuku/data/anharr-saltwater-crocodile.png",
+        "audio":"kuku/data/anharr-saltwater-crocodile.mp3",
+        "audioe":""},
+
+        {"word":"Arrmbil",	
+        "worde":"Catfish",
+        "frontimage":"kuku/data/arrmbil-catfish.png",
+        "backimage":"kuku/data/arrmbil-catfish.png",
+        "audio":"kuku/data/arrmbil-catfish.mp3",
+        "audioe":""},
+
+        {"word":"Athayr",	
+        "worde":"Little eel",
+        "frontimage":"kuku/data/athayr-little-eel.png",
+        "backimage":"kuku/data/athayr-little-eel.png",
+        "audio":"kuku/data/athayr-little-eel.mp3",
+        "audioe":""},
+
+        {"word":"Borakong",	
+        "worde":"Frog",
+        "frontimage":"kuku/data/borakong-frog.png",
+        "backimage":"kuku/data/borakong-frog.png",
+        "audio":"kuku/data/borakong-frog.mp3",
+        "audioe":""},
+
+        {"word":"Dhalawng",	
+        "worde":"Jewfish",
+        "frontimage":"kuku/data/dhalawng-black-jewfish.png",
+        "backimage":"kuku/data/dhalawng-black-jewfish.png",
+        "audio":"kuku/data/dhalawng-black-jewfish.mp3",
+        "audioe":""},
+
+        {"word":"Njalam",	
+        "worde":"Long tom",
+        "frontimage":"kuku/data/njalam-long-tom.png",
+        "backimage":"kuku/data/njalam-long-tom.png",
+        "audio":"kuku/data/njalam-long-tom.mp3",
+        "audioe":""},
+
+        {"word":"Tikarr",	
+        "worde":"Stingray",
+        "frontimage":"kuku/data/tikarr-stingray.png",
+        "backimage":"kuku/data/tikarr-stingray.png",
+        "audio":"kuku/data/tikarr-stingray.mp3",
+        "audioe":""},
+        
+        {"word":"Woy",	
+        "worde":"Freshwater crocodile",
+        "frontimage":"kuku/data/woy-freshwater-crocodile.png",
+        "backimage":"kuku/data/woy-freshwater-crocodile.png",
+        "audio":"kuku/data/woy-freshwater-crocodile.mp3",
+        "audioe":""}
+
+       
+    ]
+ 

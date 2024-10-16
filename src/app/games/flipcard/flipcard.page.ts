@@ -1,19 +1,20 @@
 import { Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-//import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { IonContent, IonHeader, IonTitle, IonToolbar,IonButtons,IonMenuButton,IonButton,IonIcon } from '@ionic/angular/standalone';
 import { Card } from 'src/app/card';
 import { addIcons } from 'ionicons';
 import { arrowBack, arrowForward, infinite, volumeHighOutline } from 'ionicons/icons';
 import { HttpService } from 'src/app/services/http.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-flipcard',
   templateUrl: './flipcard.page.html',
   styleUrls: ['./flipcard.page.scss'],
   standalone: true,
-  imports: [IonContent, IonIcon, IonHeader, IonTitle, IonToolbar,IonButtons,IonButton,IonMenuButton],
+  imports: [IonContent, RouterLink, IonIcon, IonHeader, IonTitle, IonToolbar,IonButtons,IonButton,IonMenuButton],
   animations: [
     trigger('flipState', [
       state('active', style({
@@ -30,18 +31,21 @@ import { HttpService } from 'src/app/services/http.service';
 export class FlipcardPage implements OnInit {
 
   flip:string='inactive';
-  isword:string="true";
+  isword:boolean= false;
   ftext:string="";
   btext:string = "";
   bimage:string = "";
   fimage:string= "";
   audiofile:string="";
   cards:Card[] = [];
+  cardcount = 0;
   currentcard:number = 0;
   prevactive:boolean = true;
   nextactive:boolean = false;
+  card:Card= new Card("","","","","","");
+
   
-  constructor(private httpservice: HttpService) {
+  constructor(private httpservice: HttpService,private utils: UtilsService) {
 
     addIcons({volumeHighOutline,arrowForward,arrowBack,infinite});
    
@@ -52,34 +56,19 @@ export class FlipcardPage implements OnInit {
     //get card data
     this.httpservice.getCards().subscribe(res => {
       
-    this.cards = this.shuffleArray(res);
-     
-    this.ftext = this.cards[this.currentcard].fronttext;
-    this.fimage = this.cards[this.currentcard].frontimage;
-    this.btext = this.cards[this.currentcard].backtext;
-    this.bimage = this.cards[this.currentcard].backimage;
-    
-    this.audiofile = this.cards[this.currentcard].audio;
-      if (this.audiofile == ""){
-        this.isword="true";
-      }else{
-        this.isword="false";
-      }
-      console.log('flipaudio',this.audiofile);
-      console.log(this.isword);
+    this.cards = this.utils.shuffleArray(res);
+    this.cardcount = this.cards.length;
+   
+    this.card = this.cards[this.currentcard];
+      //check if a audiofile exists else diable the button  
+    this.isword = this.utils.isAudioexist(this.card.audio);
+      
     });
     
    
   }
-  shuffleArray(array:any) {
-    for (var i = array.length - 1; i >= 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-}
+ 
+  
   toggleFlip() {
    
     this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
@@ -92,7 +81,7 @@ export class FlipcardPage implements OnInit {
       let msg = new SpeechSynthesisUtterance(texttospeak);
       let synth=(<any>window).speechSynthesis;
       let voices = synth.getVoices();
-     console.log(synth);
+     //console.log(synth);
       msg.lang = "en-AU";
       msg.rate = 0.75;
       msg.voice = voices[1];
@@ -110,36 +99,36 @@ export class FlipcardPage implements OnInit {
   }
 
   next(){
+   
     this.currentcard++;
-    if (this.currentcard == this.cards.length-1){
+    
+    if (this.currentcard >= this.cardcount-1){
       this.nextactive = true;  
     }
     
     this.setcurrentitem();
     this.prevactive = false;
+    
   }
   previous(){
+   
     this.currentcard--;
-    if (this.currentcard == 0){
+    if (this.currentcard <= 0){
       this.prevactive = true;
       this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
     }
     this.setcurrentitem();
     this.nextactive = false;
+    
   }
   setcurrentitem(){
     if(this.flip=="active"){
       this.flip="inactive";  
     }
-    this.ftext = this.cards[this.currentcard].fronttext;
-      this.fimage = this.cards[this.currentcard].frontimage;
-      this.btext = this.cards[this.currentcard].backtext;
-      this.bimage = this.cards[this.currentcard].backimage;
-      this.audiofile = this.cards[this.currentcard].audio;
-      if (this.audiofile == ""){
-        this.isword="true";
-      }else{
-        this.isword="false";
-      }
+   
+    this.card = this.cards[this.currentcard];
+     
+      this.isword = this.utils.isAudioexist(this.card.audio);
   }
+ 
 }

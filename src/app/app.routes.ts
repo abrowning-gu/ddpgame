@@ -19,5 +19,9 @@ export const routes: Routes = [
     path: 'games/tilegame',
     loadComponent: () => import('./games/tilegame/tilegame.page').then( m => m.TilegamePage)
   },
+  {
+    path: 'quiz',
+    loadComponent: () => import('./games/quiz/quiz.page').then( m => m.QuizPage)
+  },
  
 ];
