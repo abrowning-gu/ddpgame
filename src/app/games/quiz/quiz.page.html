@@ -2,7 +2,7 @@
   <ion-popover class="popover" slide="top" alignment="center" [isOpen]="isPopovertrueOpen" (didDismiss)="next()">
     <ng-template>
       <div class="notification">
-        <img src="assets/accent.png" /> Well Done
+        <img src="assets/accent.png" /> <p>Well Done</p>
         <div class="firework"></div>
         <div class="firework"></div>
         <!-- <div class="pyro">
@@ -17,7 +17,7 @@
     <ng-template>
      
         <div class="notification">
-         <img src="assets/accent.png" alt="accent"/> Try Again 
+         <img src="assets/accent.png" alt="accent"/> <p>Try Again</p> 
       </div>
      
     </ng-template>
@@ -39,7 +39,7 @@
       
       </div> 
       <div class="questions">
-        <p>{{question.question}} {{question.worde}}</p>
+        <p>{{question.question}} <strong>{{question.worde}}</strong></p>
         <ion-radio-group name="questions" (ionChange) = "itemSelected($event)" [(ngModel)]="radval">
           <ion-list>
             <ion-item class="question" *ngFor="let option of question.options">

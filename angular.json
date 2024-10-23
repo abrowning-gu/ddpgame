@@ -33,7 +33,7 @@
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
           
-            "scripts": ["src/lib/p5.min.js","src/lib/p5.sound.min.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -45,8 +45,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "5kb",
+                  "maximumError": "7kb"
                 }
               ],
               "fileReplacements": [

@@ -55,7 +55,7 @@ ion-button{
 }
 .gamebuttons{
   display:flex;
-  flex-direction:colums;
+  flex-direction:row;
   justify-content: center;
 }
 .prev ,.next{
@@ -68,7 +68,7 @@ ion-button{
   top:-3rem;
     -webkit-perspective: 1000px;
             perspective: 1000px;
-     margin-bottom:2em;   
+     margin-bottom:3.5em;   
      display:grid;
      justify-content: center;
      align-items: center;   

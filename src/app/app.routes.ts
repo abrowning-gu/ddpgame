@@ -15,10 +15,7 @@ export const routes: Routes = [
     path: 'home',
     loadComponent: () => import('./home/home.page').then( m => m.HomePage)
   },
-  {
-    path: 'games/tilegame',
-    loadComponent: () => import('./games/tilegame/tilegame.page').then( m => m.TilegamePage)
-  },
+
   {
     path: 'quiz',
     loadComponent: () => import('./games/quiz/quiz.page').then( m => m.QuizPage)
