@@ -8,6 +8,7 @@ import { addIcons } from 'ionicons';
 import { arrowBack, arrowForward, infinite, volumeHighOutline } from 'ionicons/icons';
 import { HttpService } from 'src/app/services/http.service';
 import { UtilsService } from 'src/app/services/utils.service';
+import { SetInfo } from 'src/app/setinfo';
 
 @Component({
   selector: 'app-flipcard',
@@ -39,6 +40,7 @@ export class FlipcardPage implements OnInit {
   audiofile:string="";
   cards:Card[] = [];
   cardcount = 0;
+  setinfo:SetInfo = {"lang":"","location":"","credits":"","words":[]};
   currentcard:number = 0;
   prevactive:boolean = true;
   nextactive:boolean = false;
@@ -54,9 +56,10 @@ export class FlipcardPage implements OnInit {
  
   ngOnInit() {
     //get card data
+  
     this.httpservice.getCards().subscribe(res => {
-      
-    this.cards = this.utils.shuffleArray(res);
+    this.setinfo = res; 
+    this.cards = this.utils.shuffleArray(this.setinfo.words);
     this.cardcount = this.cards.length;
    
     this.card = this.cards[this.currentcard];

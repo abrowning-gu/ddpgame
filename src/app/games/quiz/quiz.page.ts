@@ -7,6 +7,7 @@ import { IonPopover,IonRadioGroup,IonRadio,IonList,IonItem,IonCheckbox,IonConten
 import { Question } from 'src/app/question';
 import { Quiz } from 'src/app/quiz';
 import { Card } from 'src/app/card';
+import { SetInfo } from 'src/app/setinfo';
 import { addIcons } from 'ionicons';
 import { arrowBack, arrowForward, infinite, volumeHighOutline } from 'ionicons/icons';
 import { HttpService } from 'src/app/services/http.service';
@@ -30,6 +31,7 @@ export class QuizPage implements OnInit {
   audiofile:string="";
   quiz:Quiz[] = [];
   cards:Card[]=[];
+  setinfo:SetInfo = {"lang":"","location":"","credits":"","words":[]};
   question:Question = new Question("","","","","",[]);
   currentquestion:number = 0;
   prevactive:boolean = true;
@@ -49,7 +51,8 @@ export class QuizPage implements OnInit {
   ngOnInit() {
     this.httpservice.getCards().subscribe(res => {
       
-      this.cards = res;
+      this.setinfo = res;
+      this.cards = this.setinfo.words;
       this.httpservice.getQuiz().subscribe(result => {
         this.quiz = this.utils.shuffleArray(result);
         this.configureQuestion();
