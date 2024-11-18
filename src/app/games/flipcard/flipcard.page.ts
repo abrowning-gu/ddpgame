@@ -45,6 +45,7 @@ export class FlipcardPage implements OnInit {
   prevactive:boolean = true;
   nextactive:boolean = false;
   card:Card= new Card("","","","","","");
+  audionotplaying:boolean=true;
 
   
   constructor(private httpservice: HttpService,private utils: UtilsService) {
@@ -90,17 +91,21 @@ export class FlipcardPage implements OnInit {
       msg.voice = voices[1];
     synth.speak(msg);
     }else{
+      console.log('speak', this.audionotplaying);
+      if (this.audionotplaying==true){
+        this.audionotplaying=false;
       let audio = new Audio();
       if (this.cards[this.currentcard].audio != ""){
         audio.src='../assets/' + this.cards[this.currentcard].audio;
         audio.load();
+        audio.onended = ()=>{this.audionotplaying = true};
         audio.play();
       }
-     
+    }
     }
     
   }
-
+ 
   next(){
    
     this.currentcard++;

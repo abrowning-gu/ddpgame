@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package au.com.inov8design.kukuthaypan;
 
 import com.getcapacitor.BridgeActivity;
 
