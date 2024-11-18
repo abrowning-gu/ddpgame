@@ -1,0 +1,15 @@
+article {
+    width: 100%;
+    min-height: 100vh;
+    
+    display: grid;
+  }
+  
+  div {
+    max-width: 500px;
+    place-self: center;
+  }
+  article img{
+    width:100%;
+    height:auto;
+  }
