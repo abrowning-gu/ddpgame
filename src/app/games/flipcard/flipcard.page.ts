@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { IonContent, IonHeader, IonTitle, IonToolbar,IonButtons,IonMenuButton,IonButton,IonIcon } from '@ionic/angular/standalone';
+import { IonContent,IonButton,IonIcon } from '@ionic/angular/standalone';
 import { Card } from 'src/app/card';
 import { addIcons } from 'ionicons';
 import { arrowBack, arrowForward, infinite, volumeHighOutline } from 'ionicons/icons';
@@ -15,7 +15,7 @@ import { SetInfo } from 'src/app/setinfo';
   templateUrl: './flipcard.page.html',
   styleUrls: ['./flipcard.page.scss'],
   standalone: true,
-  imports: [IonContent, RouterLink, IonIcon, IonHeader, IonTitle, IonToolbar,IonButtons,IonButton,IonMenuButton],
+  imports: [IonContent, RouterLink, IonIcon, IonButton],
   animations: [
     trigger('flipState', [
       state('active', style({
@@ -71,6 +71,7 @@ export class FlipcardPage implements OnInit {
     
    
   }
+ 
  
   
   toggleFlip() {

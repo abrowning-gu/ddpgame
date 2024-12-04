@@ -1,22 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Home</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" >
+  
+  <div id="gamespace">
+   
+    <div class="layouttop">
+      <div class="corner"><img src="assets/corneronly.png"/></div>
+      <div class="language">{{setinfo.lang}}</div>
+      <div class="dots"></div>
+    </div>
+  
+  
+    <div class="homemenu">
+      <ul>
+        <li><a routerLink="/games/flipcard" >Flip Card Game</a></li>
+        <li> <a routerLink="/games/quiz" >Quiz</a></li>
+        <li><a routerLink="/about" >About</a></li>
+      </ul>
+      <img src="/assets/icon/icon-only.png" alt="KukThaypan">
+    </div>
+    
 
+     
+  <div class="layoutbottom"><img src="assets/corneronly.png"/></div>
+  
+  
+  </div>
 
-<article>
-  <div><img src="/assets/icon/icon-only.png" alt="KukThaypan"></div>
-</article>
-
-</ion-content>
+  </ion-content>
+  

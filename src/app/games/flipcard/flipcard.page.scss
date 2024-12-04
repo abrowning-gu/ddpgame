@@ -4,7 +4,8 @@
   --header-height:100px;
 }
  ion-content{
-  --background: rgb(255,252,229)  ;
+  // --background: rgb(255,252,229)  ;
+  --background: rgb(0,0,0)  ;
   
  }
 ion-button{
@@ -21,37 +22,61 @@ ion-button{
   --color:rgb(0,0,0);
 }
 .dots{
-  float:right;
   width:60px;
   height:auto;
   margin-right:2em;
   cursor:grabbing;
+  font-size:0.8em;
+  text-align:center;
 
+}
+.layouttop{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
 }
 .layouttop img{
   width:auto;
   max-height:var(--header-height);
 }
-.layoutbottom img{
+.layouttop .corner img{
   
+  min-width:100px;
+ 
+}
+.layoutbottom{
+  display:flex;
+  flex-direction:row;
+ justify-content: right;
+}
+.layoutbottom img{
+   align-self: flex-end;
   transform:rotate(180deg);
-  float:right;
-
   width:auto;
   max-height:var(--header-height);
 }
-
+.language{
+  // position:relative;
+  // top:-1em;
+  text-align:right;
+  padding-right:2em;
+  font-size:0.8em;
+  font-weight:bold;
+}
 #gamespace{
   display:grid;
-  grid-template-rows:1fr 3fr 1fr;
-  width: 100vw;
+  grid-template-rows:1fr 5fr 1fr 1fr;
+  // width: 100vw;
   height: 100vh;
   border:12px solid black;
   border-radius:1em;
+  background-color:rgb(255,252,229)  ;
 }
 .controls{
-  display:grid;
-  grid-template-columns: 70px 1fr 70px;
+  display:flex;
+  flex-direction:row;
+  //display:grid;
+  // grid-template-columns: 70px 1fr 70px;
 }
 .gamebuttons{
   display:flex;
@@ -59,11 +84,17 @@ ion-button{
   justify-content: center;
 }
 .prev ,.next{
+  flex:1;
   align-self:center;
+  // width:100%;
   
+}
+.next{
+  text-align:right;
 }
 
 .tp-wrapper {
+  flex:1;
   position:relative;
   top:-3rem;
     -webkit-perspective: 1000px;
@@ -108,13 +139,7 @@ ion-button{
   .word{
     font-size: 2.5em;
   }
-  .language{
-    position:relative;
-    top:-1em;
-    text-align:center;
-    font-size:1.8em;
-    font-weight:bold;
-  }
+ 
   .tp-box__front {
   //  background: rgba(100,100,100,0.8);
     border-radius: 12px;
@@ -135,8 +160,8 @@ ion-button{
   }
   @media only screen and (min-width:200px){
     .tp-box{
-      width:calc(var(--box-width) * 0.7);
-      height:calc(var(--box-height) * 0.7);
+      width:calc(var(--box-width) * 0.4);
+      height:calc(var(--box-height) * 0.4);
     }
     .layouttop img{
      
@@ -148,6 +173,10 @@ ion-button{
     }
     .word{
       font-size: 1em;
+    }
+    .controls{
+      
+      grid-template-columns: 1fr 4fr 1fr;
     }
   }
 
@@ -168,6 +197,13 @@ ion-button{
   .word{
     font-size: 1.5em;
   }
+  .language{
+    font-size:1.5em;
+  }
+  .controls{
+      
+    grid-template-columns: 70px 1fr 70px;
+  }
  } 
  @media only screen and (min-width:900px){
   .layouttop img,.layoutbottom img{
@@ -178,6 +214,9 @@ ion-button{
     width:calc(var(--box-width) * 1.3);
     height:calc(var(--box-height) *1.3);
   }
+  .language{
+    font-size:1.8em;
+  }
  } 
  @media only screen and (min-width:1440px){
   .tp-box{
@@ -185,6 +224,6 @@ ion-button{
     height:calc(var(--box-height) *1.5);
   }
   .word{
-    font-size: 2.5em;
+    font-size: 2.3em;
   }
  } 

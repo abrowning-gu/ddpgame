@@ -27,8 +27,12 @@
   </ion-popover>
   <div id="gamespace">
     
-  <div class="layouttop"><div class="dots"><a routerLink="/" ><img src="assets/dots-maroon.png" role="navigation" alt="nav back button" /></a></div><img src="assets/corneronly.png"/></div>
-  
+ 
+  <div class="layouttop">
+    <div class="corner"><img src="assets/corneronly.png"/></div>
+     <div class="language"><!--{{setinfo.lang}}--></div> 
+    <div class="dots"><a routerLink="/" ><img src="assets/dots-maroon.png" role="navigation" alt="nav back button" /></a>(back)</div>
+  </div>
   <div class="controls">
    <div class="prev"> <ion-button (click)="previous()" [disabled]="prevactive"> <ion-icon size="large" name="arrow-back"></ion-icon> </ion-button></div>
     <div class="tp-wrapper">
@@ -45,8 +49,9 @@
         <ion-radio-group name="questions" (ionChange) = "itemSelected($event)" [(ngModel)]="radval">
           <ion-list>
             <ion-item class="question" *ngFor="let option of question.options">
-              <ion-radio labelPlacement="end" justify="start" value="{{option}}" >{{option}}</ion-radio>
-            </ion-item>
+              <ion-radio labelPlacement="end" justify="start" value="{{option.word}}" >{{option.word}}</ion-radio>
+            
+               <ion-icon slot="end" name="volume-high-Outline" (click)="speak(option.audio)"></ion-icon></ion-item>
           </ion-list>
         </ion-radio-group>
        </div> 

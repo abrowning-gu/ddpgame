@@ -6,6 +6,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { IonPopover,IonRadioGroup,IonRadio,IonList,IonItem,IonCheckbox,IonContent, IonHeader, IonTitle, IonToolbar,IonButtons,IonMenuButton,IonButton,IonIcon } from '@ionic/angular/standalone';
 import { Question } from 'src/app/question';
 import { Quiz } from 'src/app/quiz';
+import { Quizoption } from 'src/app/quizoption';
 import { Card } from 'src/app/card';
 import { SetInfo } from 'src/app/setinfo';
 import { addIcons } from 'ionicons';
@@ -36,7 +37,7 @@ export class QuizPage implements OnInit {
   currentquestion:number = 0;
   prevactive:boolean = true;
   nextactive:boolean = false;
-  options:string[] = [];
+  options:Quizoption[] = [];
   isPopovertrueOpen:boolean = false;
   isPopoverfalseOpen:boolean = false;
   radval = "";
@@ -66,27 +67,16 @@ export class QuizPage implements OnInit {
     this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
   
   }
-  speak(){
-    let texttospeak:string = "";
-    if (this.flip == 'inactive'){
-      texttospeak = this.ftext;
-      let msg = new SpeechSynthesisUtterance(texttospeak);
-      let synth=(<any>window).speechSynthesis;
-      let voices = synth.getVoices();
-     //console.log(synth);
-      msg.lang = "en-AU";
-      msg.rate = 0.75;
-      msg.voice = voices[1];
-    synth.speak(msg);
-    }else{
+  speak(audiofile:string){
+   
       let audio = new Audio();
-      if (this.audiofile != ""){
-        audio.src='../assets/' + this.audiofile;
+      if (audiofile != ""){
+        audio.src='../assets/' + audiofile;
         audio.load();
         audio.play();
       }
      
-    }
+    
     
   }
 
@@ -117,11 +107,17 @@ export class QuizPage implements OnInit {
     this.isPopoverfalseOpen = false;
  }
   itemSelected(event:any){
-  console.log(event.detail.value, this.question.word)
+  //console.log(event.detail.value, this.question.word)
  
     if (event.detail.value == this.question.word){  
-      console.log("Open Popup correct");   
+      //console.log("Open Popup correct");   
       this.isPopovertrueOpen = true;
+      let audio = new Audio();
+     //get a sound to play for congratulations
+        audio.src='../assets/audio/clapping.mp3';
+        audio.load();
+        audio.play();
+      
      
     }else{
       console.log("Open Popup incorrect");  
@@ -149,21 +145,21 @@ export class QuizPage implements OnInit {
            this.wordexists = false;
             //check for already being in the list
             for(let i=0;i<this.options.length;i++){
-              if(this.options[i] == this.cards[rnd].word){
+              if(this.options[i].word == this.cards[rnd].word){
                 //add words to options array.
                 this.wordexists = true;
                 
               }
             }
               if (!this.wordexists){
-                this.options.push(this.cards[rnd].word);
+                this.options.push({"word":this.cards[rnd].word,"audio":this.cards[rnd].audio });
                 wordcount++;
               }
             
           }
        }
        //randomly add in the question word to the array.
-       this.options.splice(Math.floor( Math.random() * this.options.length),0,this.cards[i].word);
+       this.options.splice(Math.floor( Math.random() * this.options.length),0,{"word":this.cards[i].word,"audio":this.cards[i].audio });
        //create a new question
        
         this.question = new Question(this.quiz[this.currentquestion].question,
@@ -178,4 +174,6 @@ export class QuizPage implements OnInit {
     }
     
   }
+
+ 
 }

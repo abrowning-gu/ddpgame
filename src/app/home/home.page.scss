@@ -1,15 +1,77 @@
-article {
-    width: 100%;
-    min-height: 100vh;
-    
-    display: grid;
-  }
+ion-content{
+  --background: rgb(0,0,0)  ;
   
-  div {
-    max-width: 500px;
-    place-self: center;
+ }
+
+#gamespace{
+    display:grid;
+    grid-template-rows:1fr 4fr 1fr;
+    height: 100vh;
+    border:12px solid black;
+    border-radius:1em;
+    background-color:rgb(255,252,229)  ;
   }
-  article img{
-    width:100%;
-    height:auto;
+
+.homemenu{
+  place-self: center;
+    ul{
+      list-style: none;
+
+      & li{
+        padding-block:0.5em;
+        & a:visited, a:link{
+          text-decoration:none;
+          color:#6e4e5b;
+        }
+        & a:hover{
+         
+          color:#2c2025;
+        }
+      }
+
+      & li:before{
+        content:url("/assets/dot.png");
+        padding-right:0.5em;
+      }  
+    }
+    & img{
+      width:50vh;
+    }
   }
+
+
+
+  .layouttop{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    & .corner img{
+     
+      min-width:150px;
+      max-width:300px;
+      // max-height:var(--header-height);
+    }
+  }
+    
+ 
+    .layoutbottom{
+      display:flex;
+      flex-direction:row;
+     justify-content: right;
+    }
+    .layoutbottom img{
+       align-self: flex-end;
+      transform:rotate(180deg);
+      width:auto;
+      max-width:300px;
+      max-height:var(--header-height);
+    }
+    .language{
+      // position:relative;
+      // top:-1em;
+      text-align:right;
+      padding-right:2em;
+      font-size:1.5em;
+      font-weight:bold;
+      text-transform: uppercase;
+    }
