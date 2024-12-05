@@ -23,13 +23,13 @@
 
   <div id="layout">
     <div class="layouttop">
-      <div class="corner"><img src="assets/corneronly.png"/></div>
+      <div class="corner"><img src="assets/corneronly-kukuthaypan.png"/></div>
        <div class="language"><!--{{setinfo.lang}}--></div> 
       <div class="dots"><a routerLink="/" ><img src="assets/dots-maroon.png" role="navigation" alt="nav back button" /></a>(back)</div>
     </div>
     <div id="gamespace">
-      <div class="controls">
-        <div class="prev"> <ion-button (click)="previous()" [disabled]="prevactive"> <ion-icon size="large" name="arrow-back"></ion-icon> </ion-button></div>
+      <div class="">
+        <!-- <div class="prev"> <ion-button (click)="previous()" [disabled]="prevactive"> <ion-icon size="large" name="arrow-back"></ion-icon> </ion-button></div> -->
         <div class="tp-wrapper">
       
           <div class="tp-box" >
@@ -46,8 +46,12 @@
             </ion-radio-group>
           </div> 
         </div> <!-- tp wrapper-->
-        <div class="next"><ion-button (click)="next()"  [disabled]="nextactive"> <ion-icon size="large"  name="arrow-forward"></ion-icon> </ion-button></div>
+        <!-- <div class="next"><ion-button (click)="next()"  [disabled]="nextactive"> <ion-icon size="large"  name="arrow-forward"></ion-icon> </ion-button></div> -->
       </div><!-- controls-->
+      <div class="controls">
+      <div class="prev"> <ion-button (click)="previous()" [disabled]="prevactive"> <ion-icon size="large" name="arrow-back"></ion-icon> </ion-button></div>
+      <div class="next"><ion-button (click)="next()"  [disabled]="nextactive"> <ion-icon size="large"  name="arrow-forward"></ion-icon> </ion-button></div>
+      </div>
     </div><!-- gamespace-->
     <div class="layoutbottom corner"><img src="assets/corneronly.png"/></div>
   </div><!-- layout-->

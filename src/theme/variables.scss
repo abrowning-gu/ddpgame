@@ -24,6 +24,7 @@
       font-weight:800;
     }
   }
+  
   #layout{
     display:grid;
     grid-template-rows:1fr 4fr 1fr;
@@ -31,7 +32,12 @@
     background-color:var(--primary-bg,#ffffff);
     border-radius:0.5em;
     border:10px solid black;
+    
   }
+  .ios #layout{
+    border-top-width:25px;
+  }
+  
   .dots{
     width:60px;
     height:auto;

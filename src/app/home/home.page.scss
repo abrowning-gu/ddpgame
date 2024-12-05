@@ -66,7 +66,7 @@ ion-content{
 
   .corner img{
    
-    max-height:calc(var(var(--header-height,80px))*0.5);
+    max-height:calc(var(--header-height)*0.5);
   }
  
   
@@ -77,7 +77,7 @@ ion-content{
 
 .corner img{
    
-  max-height:calc(var(var(--header-height,80px))*0.7);
+  max-height:calc(var(--header-height)*0.7);
 }
 
 
@@ -85,7 +85,7 @@ ion-content{
 @media only screen and (max-height:700px){
 .corner img{
    
-  max-height:calc(var(var(--header-height,80px))*0.5);
+  max-height:calc(var(--header-height)*0.5);
 }
 }
 @media only screen and (min-width:900px){
