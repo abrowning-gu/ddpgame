@@ -94,7 +94,7 @@ ion-content{
 
 .corner img{
    
-  max-height:calc(var(--header-height,80px));
+  max-height:var(--header-height);
 }
 
 } 
@@ -103,7 +103,10 @@ ion-content{
   width:calc(var(--box-width) * 1.1);
   height:calc(var(--box-height) *1.1);
 }
-
+.corner img{
+   
+  max-height:calc(var(--header-height)* 1.2);
+}
 } 
 
   

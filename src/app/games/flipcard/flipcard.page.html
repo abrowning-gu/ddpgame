@@ -3,13 +3,12 @@
     <div class="layouttop">
       <div class="corner"><img src="assets/corneronly-kukuthaypan.png"/></div>
        <!-- <div class="language">{{setinfo.lang}}</div>  -->
-      <div class="dots"><a routerLink="/" ><img src="assets/dots-maroon.png" role="navigation" alt="nav back button" /></a>(back)</div>
+      <div class="dots"><a routerLink="/" ><img src="assets/dots-maroon.png" role="navigation" alt="nav back button" /></a>-home-</div>
     </div>
     <div class="gamespace">
-      <div class="controls">
-        <!-- <div class="prev"> <ion-button (click)="previous()" [disabled]="prevactive"> <ion-icon size="large" name="arrow-back"></ion-icon> </ion-button></div>
-        <div class="next"><ion-button (click)="next()"  [disabled]="nextactive"> <ion-icon size="large"  name="arrow-forward"></ion-icon> </ion-button></div> -->
-      </div>
+      <!-- <div class="controls">
+     
+      </div> -->
 
       <div class="tp-wrapper">
         <div class="tp-box" [@flipState]="flip">
@@ -24,15 +23,15 @@
         </div> <!--tp-box-->
           
       </div> <!--tp-wrapper-->
-      <div class="gamebuttons">
-        <div class="prev"> <ion-button (click)="previous()" [disabled]="prevactive"> <ion-icon size="large" name="arrow-back"></ion-icon> </ion-button></div>
-        
-        <div><ion-button (click)="toggleFlip()" >Flip <ion-icon slot="start" name="infinite"></ion-icon></ion-button></div>
-        <div><ion-button (click)="speak()" [disabled]="isword">Speak <ion-icon slot="start" name="volume-high-Outline"></ion-icon></ion-button></div>
-        <div class="next"><ion-button (click)="next()"  [disabled]="nextactive"> <ion-icon size="large"  name="arrow-forward"></ion-icon> </ion-button></div>
-      </div>
+      
     </div> <!--end game space-->
-  
+    <div class="gamebuttons">
+      <div class="prev"> <ion-button (click)="previous()" [disabled]="prevactive"> <ion-icon size="large" name="arrow-back"></ion-icon> </ion-button></div>
+      
+      <div><ion-button (click)="toggleFlip()" >Flip <ion-icon slot="start" name="infinite"></ion-icon></ion-button></div>
+      <div><ion-button (click)="speak()" [disabled]="isword">Speak <ion-icon slot="start" name="volume-high-Outline"></ion-icon></ion-button></div>
+      <div class="next"><ion-button (click)="next()"  [disabled]="nextactive"> <ion-icon size="large"  name="arrow-forward"></ion-icon> </ion-button></div>
+    </div>
 
     <div class="layoutbottom corner"><img src="assets/corneronly.png"/></div>
 

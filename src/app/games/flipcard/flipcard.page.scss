@@ -1,6 +1,6 @@
 :host{
-  --box-width:300px;
-  --box-height:300px;
+  --box-width:400px;
+  --box-height:400px;
   --header-height:80px;
 }
  ion-content{
@@ -21,7 +21,10 @@ ion-button{
   --border-style:solid;
   --color:rgb(0,0,0);
 }
-
+#layout{
+ 
+  grid-template-rows:1fr 8fr 1fr 1fr;
+}
 
 .language{
   // position:relative;
@@ -41,6 +44,7 @@ ion-button{
   display:flex;
   flex-direction:row;
   justify-content: center;
+  background-color:var(--primary-bg,#ffffff);
 }
 .prev ,.next{
   flex:1;

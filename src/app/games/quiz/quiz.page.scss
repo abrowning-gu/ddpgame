@@ -44,7 +44,10 @@
     --color:rgb(0,0,0);
   }
 
-  
+  .dots{
+    display:relative;
+    z-index:9999;
+  }
   
   
   .language{
