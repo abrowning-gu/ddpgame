@@ -12,6 +12,9 @@
   }
 :root{
     --ion-font-family:edu-qld, noto-sans, Arial;
+    --primary-bg:hsl(42,100%,95%);
+    --button-bg:hsla(200,20.2%,42.7%,0.9);
+    --button-text:#ffffff;
     
 }
 @supports (font-variation-settings: "wdth" 800) {
@@ -21,6 +24,56 @@
       font-weight:800;
     }
   }
-
+  #layout{
+    display:grid;
+    grid-template-rows:1fr 4fr 1fr;
+    height: 100vh;
+    background-color:var(--primary-bg,#ffffff);
+    border-radius:0.5em;
+    border:10px solid black;
+  }
+  .dots{
+    width:60px;
+    height:auto;
+    margin-right:2em;
+    cursor:grabbing;
+    font-size:0.8em;
+    text-align:center;
+  
+  }
+.layouttop{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    & .corner img{
+     
+      min-width:150px;
+      max-width:300px;
+      // max-height:var(--header-height);
+    }
+  }
+    
  
+    .layoutbottom{
+      display:flex;
+      flex-direction:row;
+     justify-content: right;
+    }
+    .layoutbottom img{
+       align-self: flex-end;
+      transform:rotate(180deg);
+      width:auto;
+      max-width:300px;
+      max-height:var(--header-height);
+    }
+    .corner img{
+  
+      min-width:100px;
+     
+    }
+    .gamespace{
+
+      background-color:var(--primary-bg,#ffffff);
+      
+    }
 

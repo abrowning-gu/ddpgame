@@ -1,27 +1,27 @@
 
-<ion-content [fullscreen]="true" >
+<ion-content  >
+  <div id="layout">
   
-  <div id="gamespace">
    
     <div class="layouttop">
       <div class="corner"><img src="assets/corneronly.png"/></div>
-      <div class="language">{{setinfo.lang}}</div>
+      <!-- <div class="language">{{setinfo.lang}}</div> -->
       <div class="dots"></div>
     </div>
   
-  
-    <div class="homemenu">
-      <ul>
-        <li><a routerLink="/games/flipcard" >Flip Card Game</a></li>
-        <li> <a routerLink="/games/quiz" >Quiz</a></li>
-        <li><a routerLink="/about" >About</a></li>
-      </ul>
-      <img src="/assets/icon/icon-only.png" alt="KukThaypan">
+    <div class="gamespace">
+      <div class="homemenu">
+        <ul>
+          <li><a routerLink="/games/flipcard" >Flip Card Game</a></li>
+          <li> <a routerLink="/games/quiz" >Quiz</a></li>
+          <li><a routerLink="/about" >About</a></li>
+        </ul>
+        <img src="/assets/icon/icon-only.png" alt="KukThaypan">
+      </div>
     </div>
-    
 
      
-  <div class="layoutbottom"><img src="assets/corneronly.png"/></div>
+  <div class="layoutbottom corner"><img src="assets/corneronly.png"/></div>
   
   
   </div>

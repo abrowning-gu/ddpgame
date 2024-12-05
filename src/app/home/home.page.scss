@@ -1,19 +1,27 @@
+:host{
+
+  --header-height:80px;
+}
 ion-content{
   --background: rgb(0,0,0)  ;
   
+  
  }
+ .language{
+  // position:relative;
+  // top:-1em;
+  text-align:right;
+  padding-right:2em;
+  font-size:1.5em;
+  font-weight:bold;
+  text-transform: uppercase;
+}
 
-#gamespace{
-    display:grid;
-    grid-template-rows:1fr 4fr 1fr;
-    height: 100vh;
-    border:12px solid black;
-    border-radius:1em;
-    background-color:rgb(255,252,229)  ;
-  }
 
 .homemenu{
-  place-self: center;
+  align-self:center;
+  justify-self:center;
+  // place-self: center;
     ul{
       list-style: none;
 
@@ -35,43 +43,68 @@ ion-content{
       }  
     }
     & img{
-      width:50vh;
+      width:300px;
+      
     }
-  }
-
-
-
-  .layouttop{
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
-    & .corner img{
-     
-      min-width:150px;
-      max-width:300px;
-      // max-height:var(--header-height);
-    }
-  }
+    & img:hover{
     
+      animation: wiggle 1.5s;
+      
+    }
+  }
+  @keyframes wiggle {
+    0% { transform: rotate(0deg); }
+   40% { transform: rotate(3deg); }
+   50% { transform: rotate(6deg); }
+   60% { transform: rotate(10deg); }
+   70% { transform: rotate(5deg); }
+   80% { transform: rotate(3deg); }
+   95% { transform: rotate(2deg); }
+  100% { transform: rotate(0deg); }
+}
+@media only screen and (min-width:200px){
+
+  .corner img{
+   
+    max-height:calc(var(var(--header-height,80px))*0.5);
+  }
  
-    .layoutbottom{
-      display:flex;
-      flex-direction:row;
-     justify-content: right;
-    }
-    .layoutbottom img{
-       align-self: flex-end;
-      transform:rotate(180deg);
-      width:auto;
-      max-width:300px;
-      max-height:var(--header-height);
-    }
-    .language{
-      // position:relative;
-      // top:-1em;
-      text-align:right;
-      padding-right:2em;
-      font-size:1.5em;
-      font-weight:bold;
-      text-transform: uppercase;
-    }
+  
+}
+
+@media only screen and (min-width:600px){
+
+
+.corner img{
+   
+  max-height:calc(var(var(--header-height,80px))*0.7);
+}
+
+
+} 
+@media only screen and (max-height:700px){
+.corner img{
+   
+  max-height:calc(var(var(--header-height,80px))*0.5);
+}
+}
+@media only screen and (min-width:900px){
+
+
+
+.corner img{
+   
+  max-height:calc(var(--header-height,80px));
+}
+
+} 
+@media only screen and (min-width:1440px){
+.tp-box{
+  width:calc(var(--box-width) * 1.1);
+  height:calc(var(--box-height) *1.1);
+}
+
+} 
+
+  
+    

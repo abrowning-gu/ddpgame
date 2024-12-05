@@ -3,14 +3,14 @@ import { CommonModule,NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule} from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { IonPopover,IonRadioGroup,IonRadio,IonList,IonItem,IonCheckbox,IonContent, IonHeader, IonTitle, IonToolbar,IonButtons,IonMenuButton,IonButton,IonIcon } from '@ionic/angular/standalone';
+import { IonPopover,IonRadioGroup,IonRadio,IonList,IonItem,IonCheckbox,IonContent,IonButton,IonIcon } from '@ionic/angular/standalone';
 import { Question } from 'src/app/question';
 import { Quiz } from 'src/app/quiz';
 import { Quizoption } from 'src/app/quizoption';
 import { Card } from 'src/app/card';
 import { SetInfo } from 'src/app/setinfo';
 import { addIcons } from 'ionicons';
-import { arrowBack, arrowForward, infinite, volumeHighOutline } from 'ionicons/icons';
+import { arrowBack, arrowForward, infinite, server, volumeHighOutline } from 'ionicons/icons';
 import { HttpService } from 'src/app/services/http.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
@@ -19,7 +19,7 @@ import { UtilsService } from 'src/app/services/utils.service';
   templateUrl: './quiz.page.html',
   styleUrls: ['./quiz.page.scss'],
   standalone: true,
-  imports: [NgFor,FormsModule,IonPopover,IonRadioGroup,IonRadio,IonList,IonItem,IonCheckbox,IonContent, RouterLink, IonIcon, IonHeader, IonTitle, IonToolbar,IonButtons,IonButton,IonMenuButton],
+  imports: [NgFor,FormsModule,IonPopover,IonRadioGroup,IonRadio,IonList,IonItem,IonCheckbox,IonContent, RouterLink, IonIcon, IonButton],
  
 })
 export class QuizPage implements OnInit {
