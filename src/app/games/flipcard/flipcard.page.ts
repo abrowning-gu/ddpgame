@@ -82,15 +82,22 @@ export class FlipcardPage implements OnInit {
   speak(){
     let texttospeak:string = "";
     if (this.flip == 'inactive'){
-      texttospeak = this.cards[this.currentcard].worde;
-      let msg = new SpeechSynthesisUtterance(texttospeak);
-      let synth=(<any>window).speechSynthesis;
-      let voices = synth.getVoices();
-     //console.log(synth);
-      msg.lang = "en-AU";
-      msg.rate = 0.75;
-      msg.voice = voices[1];
-    synth.speak(msg);
+    //   texttospeak = this.cards[this.currentcard].worde;
+    //   let msg = new SpeechSynthesisUtterance(texttospeak);
+    //   let synth=(<any>window).speechSynthesis;
+    //   let voices = synth.getVoices();
+    //  //console.log(synth);
+    //   msg.lang = "en-AU";
+    //   msg.rate = 0.75;
+    //   msg.voice = voices[1];
+    // synth.speak(msg);
+    let audio = new Audio();
+      if (this.cards[this.currentcard].audioe != ""){
+        audio.src='../assets/' + this.cards[this.currentcard].audioe;
+        audio.load();
+        audio.onended = ()=>{this.audionotplaying = true};
+        audio.play();
+      }
     }else{
       console.log('speak', this.audionotplaying);
       if (this.audionotplaying==true){

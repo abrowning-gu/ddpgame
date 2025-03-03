@@ -5,7 +5,7 @@
         "frontimage":"kuku/data/adhirran-sawfish.png",
         "backimage":"kuku/data/adhirran-sawfish.png",
         "audio":"kuku/data/adhirran-sawfish.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/sawfish.mp3",
         "cat":"animal"},	
 
         {"word":"Akul",	
@@ -13,7 +13,7 @@
         "frontimage":"kuku/data/akl-long-neck-turtle.png",
         "backimage":"kuku/data/akl-long-neck-turtle.png",
         "audio":"kuku/data/akul-long-neck-turtle.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/long-neck-turtle.mp3",
         "cat":"animal"	},
 
         {"word":"Albeng",	
@@ -21,7 +21,7 @@
         "frontimage":"kuku/data/albeng-barramundi.png",
         "backimage":"kuku/data/albeng-barramundi.png",
         "audio":"kuku/data/albeng-barramundi.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/barramundi.mp3",
         "cat":"animal"},
 
         {"word":"Ambirr ambye",	
@@ -29,7 +29,7 @@
         "frontimage":"kuku/data/ambirr-ambye-big-eel.png",
         "backimage":"kuku/data/ambirr-ambye-big-eel.png",
         "audio":"kuku/data/ambirr-ambye-big-eel.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/big-eel.mp3",
         "cat":"animal"},
 
         {"word":"Anharr",	
@@ -37,7 +37,7 @@
         "frontimage":"kuku/data/anharr-saltwater-crocodile.png",
         "backimage":"kuku/data/anharr-saltwater-crocodile.png",
         "audio":"kuku/data/anharr-saltwater-crocodile.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/saltwater-crocodile.mp3",
         "cat":"animal"},
 
         {"word":"Arrmbil",	
@@ -45,7 +45,7 @@
         "frontimage":"kuku/data/arrmbil-catfish.png",
         "backimage":"kuku/data/arrmbil-catfish.png",
         "audio":"kuku/data/arrmbil-catfish.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/catfish.mp3",
         "cat":"animal"},
 
         {"word":"Athayr",	
@@ -53,7 +53,7 @@
         "frontimage":"kuku/data/athayr-little-eel.png",
         "backimage":"kuku/data/athayr-little-eel.png",
         "audio":"kuku/data/athayr-little-eel.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/little-eel.mp3",
         "cat":"animal"},
 
         {"word":"Borakong",	
@@ -61,7 +61,7 @@
         "frontimage":"kuku/data/borakong-frog.png",
         "backimage":"kuku/data/borakong-frog.png",
         "audio":"kuku/data/borakong-frog.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/frog.mp3",
         "cat":"animal"},
 
         {"word":"Dhalawng",	
@@ -69,7 +69,7 @@
         "frontimage":"kuku/data/dhalawng-black-jewfish.png",
         "backimage":"kuku/data/dhalawng-black-jewfish.png",
         "audio":"kuku/data/dhalawng-black-jewfish.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/jewfish.mp3",
         "cat":"animal"},
 
         {"word":"Njalam",	
@@ -77,7 +77,7 @@
         "frontimage":"kuku/data/njalam-long-tom.png",
         "backimage":"kuku/data/njalam-long-tom.png",
         "audio":"kuku/data/njalam-long-tom.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/long-tom.mp3",
         "cat":"animal"},
 
         {"word":"Tikarr",	
@@ -85,7 +85,7 @@
         "frontimage":"kuku/data/tikarr-stingray.png",
         "backimage":"kuku/data/tikarr-stingray.png",
         "audio":"kuku/data/tikarr-stingray.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/stingray.mp3",
         "cat":"animal"},
         
         {"word":"Woy",	
@@ -93,7 +93,7 @@
         "frontimage":"kuku/data/woy-freshwater-crocodile.png",
         "backimage":"kuku/data/woy-freshwater-crocodile.png",
         "audio":"kuku/data/woy-freshwater-crocodile.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/freshwater-crocodile.mp3",
         "cat":"animal"},
 
         {"word":"Acilpa",	
@@ -101,7 +101,7 @@
         "frontimage":"kuku/data/acilpa-jabiru.png",
         "backimage":"kuku/data/acilpa-jabiru.png",
         "audio":"kuku/data/acilpa-jabiru.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/jabiru.mp3",
         "cat":"bird"},
 
         {"word":"Adhayung",	
@@ -109,7 +109,7 @@
         "frontimage":"kuku/data/adhayung-crow.png",
         "backimage":"kuku/data/adhayung-crow.png",
         "audio":"kuku/data/adhayung-crow.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/crow.mp3",
         "cat":"bird"},
         
         {"word":"Alimba",	
@@ -117,7 +117,7 @@
         "frontimage":"kuku/data/alimba-galah.png",
         "backimage":"kuku/data/alimba-galah.png",
         "audio":"kuku/data/alimba-galah.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/galah.mp3",
         "cat":"bird"},
 
         {"word":"Alpayrrmba",	
@@ -125,7 +125,7 @@
         "frontimage":"kuku/data/alpayrrmba-pelican.png",
         "backimage":"kuku/data/alpayrrmba-pelican.png",
         "audio":"kuku/data/alpayrrmba-pelican.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/pelican.mp3",
         "cat":"bird"},
 
         {"word":"Anggewa",	
@@ -133,7 +133,7 @@
         "frontimage":"kuku/data/anggewa-brolga.png",
         "backimage":"kuku/data/anggewa-brolga.png",
         "audio":"kuku/data/anggewa-brolga.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/brolga.mp3",
         "cat":"bird"},
 
         {"word":"Arriba",	
@@ -141,7 +141,7 @@
         "frontimage":"kuku/data/arriba-emu.png",
         "backimage":"kuku/data/arriba-emu.png",
         "audio":"kuku/data/arriba-emu.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/emu.mp3",
         "cat":"bird"},
 
         
@@ -150,7 +150,7 @@
         "frontimage":"kuku/data/arrmarrmanja-blackcockatoo.png",
         "backimage":"kuku/data/arrmarrmanja-blackcockatoo.png",
         "audio":"kuku/data/arrmarrmanja-blackcockatoo.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/black-cockatoo.mp3",
         "cat":"bird"},
     
         {"word":"Arrolmba",	
@@ -158,7 +158,7 @@
         "frontimage":"kuku/data/arrolmba-kookaburra.png",
         "backimage":"kuku/data/arrolmba-kookaburra.png",
         "audio":"kuku/data/arrolmba-kookaburra.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/kookaburra.mp3",
         "cat":"bird"},
 
         {"word":"Arromi",	
@@ -166,7 +166,7 @@
         "frontimage":"kuku/data/arromi-eaglehawk.png",
         "backimage":"kuku/data/arromi-eaglehawk.png",
         "audio":"kuku/data/arromi-eaglehawk.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/eagle-hawk.mp3",
         "cat":"bird"},
 
         {"word":"Kulmbarrga",	
@@ -174,7 +174,7 @@
         "frontimage":"kuku/data/kulmbarrga-magpie.png",
         "backimage":"kuku/data/kulmbarrga-magpie.png",
         "audio":"kuku/data/kulmbarrga-magpie.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/magpie.mp3",
         "cat":"bird"},
 
         {"word":"Lawn",	
@@ -182,7 +182,7 @@
         "frontimage":"kuku/data/lawn-bustard.png",
         "backimage":"kuku/data/lawn-bustard.png",
         "audio":"kuku/data/lawn-bustard.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/bustard.mp3",
         "cat":"bird"},
 
         {"word":"Thayrrathe",	
@@ -190,7 +190,7 @@
         "frontimage":"kuku/data/thayrrathe-willywagtail.png",
         "backimage":"kuku/data/thayrrathe-willywagtail.png",
         "audio":"kuku/data/thayrrathe-willywagtail.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/willy-wag-tail.mp3",
         "cat":"bird"},
 
         {"word":"Yimal",	
@@ -198,7 +198,7 @@
         "frontimage":"kuku/data/yimal-curlew.png",
         "backimage":"kuku/data/yimal-curlew.png",
         "audio":"kuku/data/yimal-curlew.mp3",
-        "audioe":"",
+        "audioe":"kuku/data/curlew.mp3",
         "cat":"bird"}
     ]
 }

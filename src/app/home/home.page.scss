@@ -36,30 +36,33 @@ ion-content{
           color:#2c2025;
         }
       }
-
+      & li:has(:hover):before{
+          filter: drop-shadow(2px 2px 3px #000600);
+       
+        
+      }
       & li:before{
         content:url("/assets/dot.png");
+        filter: drop-shadow(4px 4px 5px #0003);
         padding-right:0.5em;
+        transform:filter 0.3s;
       }  
     }
     & img{
-      width:300px;
+      max-width:400px;
       
     }
     & img:hover{
     
-      animation: wiggle 1.5s;
+      animation: wiggle 0.5s ease-in-out forwards;
       
     }
   }
   @keyframes wiggle {
     0% { transform: rotate(0deg); }
-   40% { transform: rotate(3deg); }
-   50% { transform: rotate(6deg); }
+
    60% { transform: rotate(10deg); }
-   70% { transform: rotate(5deg); }
-   80% { transform: rotate(3deg); }
-   95% { transform: rotate(2deg); }
+  
   100% { transform: rotate(0deg); }
 }
 @media only screen and (min-width:200px){
