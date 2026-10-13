@@ -1,150 +1,128 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { IonContent,IonButton,IonIcon } from '@ionic/angular/standalone';
-import { Card } from 'src/app/card';
+import { IonContent, IonButton, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { arrowBack, arrowForward, infinite, volumeHighOutline } from 'ionicons/icons';
-import { HttpService } from 'src/app/services/http.service';
+import { LanguageModuleService, ResolvedLanguageWord } from 'src/app/services/language-module.service';
 import { UtilsService } from 'src/app/services/utils.service';
-import { SetInfo } from 'src/app/setinfo';
+import { LanguageThemeService } from 'src/app/services/language-theme.service';
 
 @Component({
   selector: 'app-flipcard',
   templateUrl: './flipcard.page.html',
   styleUrls: ['./flipcard.page.scss'],
   standalone: true,
-  imports: [IonContent, RouterLink, IonIcon, IonButton],
+  imports: [CommonModule, IonContent, RouterLink, IonIcon, IonButton],
   animations: [
     trigger('flipState', [
-      state('active', style({
-        transform: 'rotateY(179deg)'
-      })),
-      state('inactive', style({
-        transform: 'rotateY(0)'
-      })),
+      state('active', style({ transform: 'rotateY(179deg)' })),
+      state('inactive', style({ transform: 'rotateY(0)' })),
       transition('active => inactive', animate('500ms ease-out')),
       transition('inactive => active', animate('500ms ease-in'))
     ])
   ]
 })
 export class FlipcardPage implements OnInit {
-
-  flip:string='inactive';
-  isword:boolean= false;
-  ftext:string="";
-  btext:string = "";
-  bimage:string = "";
-  fimage:string= "";
-  audiofile:string="";
-  cards:Card[] = [];
+  flip = 'inactive';
+  cards: ResolvedLanguageWord[] = [];
   cardcount = 0;
-  setinfo:SetInfo = {"lang":"","location":"","credits":"","words":[]};
-  currentcard:number = 0;
-  prevactive:boolean = true;
-  nextactive:boolean = false;
-  card:Card= new Card("","","","","","");
-  audionotplaying:boolean=true;
+  currentcard = 0;
+  prevactive = true;
+  nextactive = false;
+  card: ResolvedLanguageWord | null = null;
+  audionotplaying = true;
+  private firstEntry = true;
 
-  
-  constructor(private httpservice: HttpService,private utils: UtilsService) {
+  constructor(
+    private languageModules: LanguageModuleService,
+    public readonly theme: LanguageThemeService,
+    private utils: UtilsService
+  ) {
+    addIcons({ volumeHighOutline, arrowForward, arrowBack, infinite });
+  }
 
-    addIcons({volumeHighOutline,arrowForward,arrowBack,infinite});
-   
-    
-   }
- 
-  ngOnInit() {
-    //get card data
-  
-    this.httpservice.getCards().subscribe(res => {
-    this.setinfo = res; 
-    this.cards = this.utils.shuffleArray(this.setinfo.words);
-    this.cardcount = this.cards.length;
-   
-    this.card = this.cards[this.currentcard];
-      //check if a audiofile exists else diable the button  
-   // this.isword = this.utils.isAudioexist(this.card.audio);
-      
-    });
-    
-   
+  ngOnInit(): void {
+    this.loadCards();
   }
- 
- 
-  
-  toggleFlip() {
-   
-    this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
-  
-  }
-  speak(){
-    let texttospeak:string = "";
-    if (this.flip == 'inactive'){
-    //   texttospeak = this.cards[this.currentcard].worde;
-    //   let msg = new SpeechSynthesisUtterance(texttospeak);
-    //   let synth=(<any>window).speechSynthesis;
-    //   let voices = synth.getVoices();
-    //  //console.log(synth);
-    //   msg.lang = "en-AU";
-    //   msg.rate = 0.75;
-    //   msg.voice = voices[1];
-    // synth.speak(msg);
-    let audio = new Audio();
-      if (this.cards[this.currentcard].audioe != ""){
-        audio.src='../assets/' + this.cards[this.currentcard].audioe;
-        audio.load();
-        audio.onended = ()=>{this.audionotplaying = true};
-        audio.play();
-      }
-    }else{
-      console.log('speak', this.audionotplaying);
-      if (this.audionotplaying==true){
-        this.audionotplaying=false;
-      let audio = new Audio();
-      if (this.cards[this.currentcard].audio != ""){
-        audio.src='../assets/' + this.cards[this.currentcard].audio;
-        audio.load();
-        audio.onended = ()=>{this.audionotplaying = true};
-        audio.play();
-      }
+
+  ionViewWillEnter(): void {
+    if (this.firstEntry) {
+      this.firstEntry = false;
+      return;
     }
-    }
-    
+    this.loadCards();
   }
- 
-  next(){
-   
-    this.currentcard++;
-    
-    if (this.currentcard >= this.cardcount-1){
-      this.nextactive = true;  
-    }
-    
-    this.setcurrentitem();
-    this.prevactive = false;
-    
-  }
-  previous(){
-   
-    this.currentcard--;
-    if (this.currentcard <= 0){
+
+  private loadCards(): void {
+    this.languageModules.loadSelectedModule().subscribe(module => {
+      this.theme.applyManifestTheme(module.manifest);
+      const playableCards = module.playableWords.filter(word => word.image !== null && !word.region);
+      this.cards = this.utils.shuffleArray([...playableCards]);
+      this.cardcount = this.cards.length;
+      this.currentcard = 0;
       this.prevactive = true;
-      this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
+      this.nextactive = this.cardcount <= 1;
+      this.setcurrentitem();
+    });
+  }
+
+  toggleFlip(): void {
+    this.flip = this.flip === 'inactive' ? 'active' : 'inactive';
+  }
+
+  get currentAudioUrl(): string | null {
+    return this.flip === 'inactive'
+      ? this.card?.englishAudioUrl ?? null
+      : this.card?.languageAudioUrl ?? null;
+  }
+
+  get canSpeak(): boolean {
+    return this.currentAudioUrl !== null;
+  }
+
+  speak(): void {
+    const audioUrl = this.currentAudioUrl;
+    if (!audioUrl || !this.audionotplaying) {
+      return;
     }
+
+    this.audionotplaying = false;
+    const audio = new Audio(audioUrl);
+    audio.onended = () => this.audionotplaying = true;
+    audio.onerror = () => this.audionotplaying = true;
+    audio.play().catch(() => this.audionotplaying = true);
+  }
+
+  next(): void {
+    if (this.currentcard >= this.cardcount - 1) {
+      return;
+    }
+    this.currentcard++;
     this.setcurrentitem();
-    this.nextactive = false;
-    
+    this.prevactive = this.currentcard === 0;
+    this.nextactive = this.currentcard >= this.cardcount - 1;
   }
-  setcurrentitem(){
-    if(this.flip=="active"){
-      this.flip="inactive";  
+
+  previous(): void {
+    if (this.currentcard <= 0) {
+      return;
     }
-   
-    this.card = this.cards[this.currentcard];
-     
-      this.isword = this.utils.isAudioexist(this.card.audio);
+    this.currentcard--;
+    this.setcurrentitem();
+    this.prevactive = this.currentcard === 0;
+    this.nextactive = false;
   }
- 
+
+  hideImage(): void {
+    if (this.card) {
+      this.card.imageUrl = null;
+    }
+  }
+
+  private setcurrentitem(): void {
+    this.flip = 'inactive';
+    this.card = this.cards[this.currentcard] ?? null;
+  }
 }

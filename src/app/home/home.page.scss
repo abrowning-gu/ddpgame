@@ -7,6 +7,26 @@ ion-content{
   
   
  }
+
+#layout {
+  box-sizing: border-box;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+.dots img {
+  width: 60px;
+  height: auto;
+}
+
+.layouttop .corner img,
+.layoutbottom.corner img {
+  display: block;
+  width: min(300px, 25vw);
+  height: auto;
+  max-height: none;
+  min-width: 0;
+}
+
  .language{
   // position:relative;
   // top:-1em;
@@ -20,7 +40,7 @@ ion-content{
 
 .homemenu{
  
-  justify-self:center;
+  place-self:center;
   // place-self: center;
     ul{
       list-style: none;
@@ -29,11 +49,11 @@ ion-content{
         padding-block:0.5em;
         & a:visited, a:link{
           text-decoration:none;
-          color:#6e4e5b;
+          color:var(--button-bg);
         }
         & a:hover{
          
-          color:#2c2025;
+          color:var(--link-hover);
         }
       }
       & li:has(:hover):before{
@@ -42,9 +62,17 @@ ion-content{
         
       }
       & li:before{
-        content:url("/assets/dot.png");
+        content:"";
+        display:inline-block;
+        width:0.75em;
+        height:1em;
+        margin-right:0.5em;
+        vertical-align:middle;
+        background-image:var(--theme-bullet-icon, url("/assets/dot.png"));
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:contain;
         filter: drop-shadow(4px 4px 5px #0003);
-        padding-right:0.5em;
         transform:filter 0.3s;
       }  
     }
@@ -76,6 +104,11 @@ ion-content{
 }
 
 @media only screen and (min-width:600px){
+
+.homemenu > img {
+  max-height: min(38vh, 400px);
+  object-fit: contain;
+}
 
 
 .corner img{
@@ -111,6 +144,53 @@ ion-content{
   max-height:calc(var(--header-height)* 1.2);
 }
 } 
+
+@media (orientation: landscape) and (max-height: 600px) {
+  #layout {
+    height: 100%;
+    min-height: 100%;
+    grid-template-rows: 3rem minmax(0, 1fr) 1.5rem;
+    overflow: auto;
+  }
+
+  .dots {
+    width: 2.5rem;
+    margin: 0.15rem 0.75rem 0 0;
+    font-size: 0.6rem;
+    line-height: 1;
+  }
+
+  .layouttop .corner img,
+  .layoutbottom.corner img {
+    width: min(8rem, 18vw);
+    max-height: 3rem;
+  }
+
+  .homemenu {
+    display: grid;
+    grid-template-columns: minmax(7rem, 28vw) auto;
+    gap: clamp(1rem, 4vw, 3rem);
+    align-items: center;
+    width: min(90%, 40rem);
+    min-height: 0;
+  }
+
+  .homemenu img {
+    width: 100%;
+    max-width: 12rem;
+    max-height: 46dvh;
+    object-fit: contain;
+  }
+
+  .homemenu ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  .homemenu ul li {
+    padding-block: clamp(0.2rem, 1vh, 0.45rem);
+  }
+}
 
   
     

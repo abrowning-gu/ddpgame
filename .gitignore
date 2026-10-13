@@ -31,6 +31,11 @@ log.txt
 
 # Node
 /node_modules
+/admin-panel/node_modules
+/admin-panel/dist
+/admin-panel/.angular
+/admin-panel/.npm-cache
+/supabase/.temp/
 npm-debug.log
 yarn-error.log
 

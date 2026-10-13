@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { IonContent, IonButton, IonIcon } from '@ionic/angular/standalone';
-import { Card } from 'src/app/card';
-import { HttpService } from 'src/app/services/http.service';
-import { UtilsService } from 'src/app/services/utils.service';
-import { SetInfo } from 'src/app/setinfo';
+import { take } from 'rxjs';
+import { getRegionDragDropGroups, LanguageModuleService } from 'src/app/services/language-module.service';
+import { LanguageThemeService } from 'src/app/services/language-theme.service';
 
 
 @Component({
@@ -17,27 +16,39 @@ import { SetInfo } from 'src/app/setinfo';
   imports: [IonIcon, IonButton, RouterLink,IonContent,  CommonModule, FormsModule]
 })
 export class HomePage implements OnInit {
-  cards:Card[] = [];
-  setinfo:SetInfo = {"lang":"","location":"","credits":"","words":[]};
-  cardcount = 0;
-  card:Card= new Card("","","","","","");
-  currentcard:number = 0;
-  constructor(private httpservice: HttpService,private utils: UtilsService) { }
+  languageName = '';
+  supportsDragDrop = false;
+  private firstEntry = true;
+  constructor(
+    private languageModules: LanguageModuleService,
+    public readonly theme: LanguageThemeService
+  ) { }
 
   ngOnInit() {
-    //get card data
-  
-    this.httpservice.getCards().subscribe(res => {
-    this.setinfo = res; 
-    // this.cards = this.utils.shuffleArray(this.setinfo.words);
-    // this.cardcount = this.cards.length;
-   
-    // this.card = this.cards[this.currentcard];
-   
-      
+    this.loadHome();
+  }
+
+  ionViewWillEnter(): void {
+    if (this.firstEntry) {
+      this.firstEntry = false;
+      return;
+    }
+
+    this.loadHome();
+  }
+
+  private loadHome(): void {
+    this.supportsDragDrop = false;
+    this.languageModules.loadSelectedModule().pipe(take(1)).subscribe({
+      next: module => {
+        this.languageName = module.manifest.name;
+        this.supportsDragDrop = getRegionDragDropGroups(module.playableWords).length > 0;
+        this.theme.applyManifestTheme(module.manifest);
+      },
+      error: () => {
+        this.supportsDragDrop = false;
+      }
     });
-    
-   
   }
 
 }

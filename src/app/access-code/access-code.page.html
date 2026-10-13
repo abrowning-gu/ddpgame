@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Private language access</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <main>
+    <h1>Enter access code</h1>
+    <p>Enter the code supplied for {{ moduleName }}.</p>
+
+    <ion-item>
+      <ion-label position="stacked">Access code</ion-label>
+      <ion-input
+        [(ngModel)]="accessCode"
+        autocomplete="off"
+        placeholder="e.g. BKW-XXXX-XXXX-XXXX"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" [disabled]="isChecking || !moduleId" (click)="validate()">
+      <ion-spinner *ngIf="isChecking" name="crescent"></ion-spinner>
+      <span *ngIf="!isChecking">Check access code</span>
+    </ion-button>
+
+    <div *ngIf="isDownloading" class="download-status" role="status" aria-live="polite">
+      <strong>Downloading {{ moduleName }}…</strong>
+      <ion-progress-bar
+        [value]="(downloadProgress?.percent ?? 0) / 100"
+        aria-label="Restricted language download progress">
+      </ion-progress-bar>
+      <span *ngIf="downloadProgress && downloadProgress.totalAssets > 0">
+        {{ downloadProgress.completedAssets }} of {{ downloadProgress.totalAssets }} assets · {{ downloadProgress.percent }}%
+      </span>
+      <span *ngIf="!downloadProgress || downloadProgress.totalAssets === 0">Preparing download…</span>
+    </div>
+
+    <ion-text *ngIf="resultMessage" [color]="isValid ? 'success' : 'danger'">
+      <p role="status">{{ resultMessage }}</p>
+    </ion-text>
+  </main>
+</ion-content>

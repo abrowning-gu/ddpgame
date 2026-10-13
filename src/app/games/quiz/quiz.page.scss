@@ -3,6 +3,10 @@
     --box-height:320px;
     --header-height:80px;
   }
+
+  ion-content {
+    --background: var(--primary-bg);
+  }
  
    ion-item{
     --border-style: none;
@@ -21,11 +25,21 @@
  
     
   }
+
+  .layouttop .corner img,
+  .layoutbottom.corner img {
+    display: block;
+    width: min(300px, 25vw);
+    height: auto;
+    max-height: none;
+    min-width: 0;
+  }
+
   ion-radio{
     --border-radius:12px 6px 15px 7px;
     --inner-border-radius:6px 6px 8px 10px;
-    --color:rgb(154,72,82);
-    --color-checked: rgb(227,171,169);
+    --color:var(--link-hover);
+    --color-checked: var(--theme-surface);
     font-size:1.3em;
   }
   ion-radio::part(container) {
@@ -33,10 +47,10 @@
     height: 30px;
     border-color: #000000;
     border:3px solid;
-    background:rgb(154,72,82);
+    background:var(--link-hover);
   }
   .gamebuttons ion-button{
-    --background:rgb(210,181,159);
+    --background:var(--theme-surface);
     --border-color:rgb(0,0,0);
     --border-width:4px;
     --border-radius:12px;
@@ -63,8 +77,8 @@
     --border-color: #000000;
     --border-width:3px;
     --border-style:solid;
-    --background:rgb(154,72,82);
-    --background-hover:rgb(210,181,159);
+    --background:var(--link-hover);
+    --background-hover:var(--theme-surface);
   
     --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
  
@@ -107,9 +121,19 @@
     }
     
     .tp-box {
-      width: var(--box-width);
-      height: var(--box-height);
-     
+      display: grid;
+      place-items: center;
+      width: clamp(180px, 36vmin, 400px);
+      height: clamp(180px, 36vmin, 400px);
+    }
+
+    .tp-box img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
     }
 
   
@@ -128,12 +152,12 @@
     --finalSize: 45vmin;
     --particleSize: 0.2vmin;
     
-    --color1: rgb(154,74,83);
-    --color2: rgb(235, 54, 48);
-    --color3: white;
-    --color4: rgb(87,116,131);
-    --color5: rgb(110,78,91);
-    --color6: rgb(11, 140, 69);
+    --color1: var(--theme-accent);
+    --color2: var(--button-bg);
+    --color3: var(--button-text);
+    --color4: var(--primary-text);
+    --color5: var(--link-hover);
+    --color6: var(--button-bg);
     --y: -30vmin;
     --x: -50%;
     --initialY: 60vmin;
@@ -259,11 +283,6 @@
       .tp-wrapper {
         flex-direction:column;
       }
-      .tp-box{
-        width:calc(var(--box-width) * 0.7);
-        height:calc(var(--box-height) * 0.7);
-      }
-    
       .corner img{
        
         max-height:calc(var(--header-height)*0.5);
@@ -272,10 +291,6 @@
  
    @media only screen and (min-width:600px){
    
-    .tp-box{
-      width:calc(var(--box-width) * 1);
-      height:calc(var(--box-height) * 1);
-    }
     .corner img{
        
       max-height:calc(var(--header-height)*0.7);
@@ -293,21 +308,98 @@
       max-height:calc(var(--header-height)*1.1);
     }
     
-    .tp-box{
-      width:calc(var(--box-width) * 1.3);
-      height:calc(var(--box-height) *1.3);
-    }
     .corner img{
        
       max-height:calc(var(--header-height));
     }
    } 
-   @media only screen and (min-width:1440px){
-    .tp-box{
-      width:calc(var(--box-width) * 1.5);
-      height:calc(var(--box-height) *1.5);
+  .tp-wrapper {
+    gap: clamp(1rem, 2vh, 1.5rem);
+  }
+
+  @media (orientation: landscape) and (max-height: 600px) {
+    #layout {
+      box-sizing: border-box;
+      height: 100%;
+      min-height: 100%;
+      grid-template-rows: 3rem minmax(0, 1fr) 1.5rem;
+      overflow: hidden;
     }
-   
 
-   } 
+    .dots {
+      width: 2.25rem;
+      margin: 0.15rem 0.75rem 0 0;
+      font-size: 0.6rem;
+      line-height: 1;
+    }
 
+    .layouttop .corner img,
+    .layoutbottom.corner img {
+      width: min(8rem, 18vw);
+      max-height: 3rem;
+    }
+
+    #gamespace {
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      min-height: 0;
+      overflow: hidden;
+      background: var(--primary-bg);
+    }
+
+    #gamespace > div:first-child {
+      display: grid;
+      min-height: 0;
+      place-items: center;
+    }
+
+    .tp-wrapper {
+      top: 0;
+      min-height: 0;
+      margin-bottom: 0;
+    }
+
+    .tp-box {
+      width: min(42dvh, 28vw, 200px);
+      height: min(42dvh, 28vw, 200px);
+    }
+
+    ion-radio {
+      font-size: clamp(0.85rem, 1.8vw, 1rem);
+    }
+
+    .questions p {
+      margin-block: 0 0.35rem;
+    }
+
+    .controls ion-button {
+      min-height: 2.4rem;
+      margin-block: 0.15rem;
+    }
+
+    .notification {
+      box-sizing: border-box;
+      width: 100%;
+      max-height: calc(100dvh - 2rem);
+      margin: 0 auto;
+      padding: 1rem;
+      font-size: clamp(1.1rem, 3.5dvh, 1.5rem);
+    }
+
+    .notification img {
+      display: block;
+      width: clamp(2.5rem, 10dvh, 4rem);
+      max-height: 4rem;
+      margin: 0 auto 0.6rem;
+      object-fit: contain;
+    }
+
+    .notification p {
+      margin: 0 0 0.8rem;
+    }
+
+    .notification .close {
+      height: 2.4rem;
+      margin: 0;
+    }
+  }
